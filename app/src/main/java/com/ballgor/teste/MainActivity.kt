@@ -2,6 +2,7 @@ package com.ballgor.teste
 
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -21,9 +22,20 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun jogar(view: View){
+    fun jogar(view: View) {
         val textoNumero = findViewById<TextView>(R.id.text_numero)
-        val numero = Random.nextInt(1,7) // Gera um número de 0 a 6
-        textoNumero.setText("$numero")
+        val numero = Random.nextInt(1, 7) // Gera um número de 1 a 6
+        textoNumero.text = "$numero"
+
+        val imageView = findViewById<ImageView>(R.id.imageView)
+        val drawableResource = when (numero) {
+            1 -> R.drawable.dado1
+            2 -> R.drawable.dado2
+            3 -> R.drawable.dado3
+            4 -> R.drawable.dado4
+            5 -> R.drawable.dado5
+            else -> R.drawable.dado6
+        }
+        imageView.setImageResource(drawableResource)
     }
 }
